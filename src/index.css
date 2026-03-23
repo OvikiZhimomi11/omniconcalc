@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --background: 230 25% 95%;
+    --foreground: 230 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 10%;
+    --primary: 252 80% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 20% 93%;
+    --secondary-foreground: 230 25% 15%;
+    --muted: 230 15% 92%;
+    --muted-foreground: 230 10% 45%;
+    --accent: 280 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 15% 88%;
+    --input: 230 15% 88%;
+    --ring: 252 80% 55%;
+    --chart-1: 252 80% 55%;
+    --chart-2: 280 70% 55%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+
+    --calc-bg: 230 30% 14%;
+    --calc-display: 230 30% 10%;
+    --calc-btn: 230 20% 22%;
+    --calc-btn-hover: 230 20% 28%;
+    --calc-btn-op: 252 80% 55%;
+    --calc-btn-op-hover: 252 80% 62%;
+    --calc-btn-fn: 230 25% 30%;
+    --calc-btn-fn-hover: 230 25% 36%;
+    --calc-text: 0 0% 95%;
+    --calc-text-muted: 230 15% 55%;
+    --calc-accent: 280 70% 55%;
+    --calc-glass: 230 30% 18%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 230 30% 7%;
+    --foreground: 0 0% 95%;
+    --card: 230 30% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 230 30% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 252 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 25% 18%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 230 20% 16%;
+    --muted-foreground: 230 10% 55%;
+    --accent: 280 70% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 20% 20%;
+    --input: 230 20% 20%;
+    --ring: 252 80% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    font-family: var(--font-inter);
+  }
+  #root {
+    min-height: 100vh;
+  }
+}
+
+/* Calculator-specific styles */
+.calc-display-font {
+  font-family: var(--font-mono);
+}
+
+.glass-panel {
+  background: hsl(var(--calc-glass) / 0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--calc-text) / 0.08);
+}
+
+.calc-btn {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-btn:active {
+  transform: scale(0.94);
+}
+
+.calc-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, hsl(var(--calc-text) / 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.calc-btn:hover::after {
+  opacity: 1;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.1);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px hsl(var(--accent) / 0.3), 0 0 60px hsl(var(--accent) / 0.1);
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--calc-text) / 0.15);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--calc-text) / 0.25);
+}
+
+/* Animated gradient background */
+.animated-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--calc-bg)) 0%, 
+    hsl(230 30% 12%) 50%, 
+    hsl(252 30% 14%) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Tab indicator animation */
+.tab-indicator {
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Number animation */
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.display-animate {
+  animation: slideUp 0.15s ease-out;
+}
