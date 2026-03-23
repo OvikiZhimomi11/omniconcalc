@@ -1,4 +1,5 @@
 # Omnicon – Universal Calculator Web App
+https://omniconcalc.vercel.app/
 
 Omnicon is a **modern all-in-one universal calculator** built using **HTML, CSS, and Vanilla JavaScript**.
 It combines **basic calculations, scientific functions, unit conversions, and global currency conversion** in a single responsive web application.
